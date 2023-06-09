@@ -3,7 +3,7 @@ import Message from "./Message";
 import ScrollToBottom from "react-scroll-to-bottom";
 import { io } from "socket.io-client";
 import Context from "../Context/Context";
-const socket = io("https://socketonetoonechat.onrender.com");
+const socket = io("http://localhost:8000");
 
 const Main = () => {
   const context = useContext(Context);

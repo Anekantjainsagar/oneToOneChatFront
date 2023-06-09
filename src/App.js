@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useContext, useEffect } from "react";
+import { Route, Routes, useLocation, useNavigate } from "react-router";
+import Login from "./Screen/Login";
+import Register from "./Screen/Register";
+import Home from "./Screen/Home";
+import Context from "./Context/Context";
+import axios from "axios";
+import { LOGIN_URL } from "./Utils/index";
 
-function App() {
+const App = () => {
+  const context = useContext(Context);
+  const history = useNavigate();
+  const location = useLocation();
+
+  const checkToken = () => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      axios.post(`${LOGIN_URL}/checkToken`, { token }).then((response) => {
+        context.setUser(response.data);
+      });
+    } else {
+      history("/");
+    }
+  };
+
+  useEffect(() => {
+    if (location.pathname !== "/register" && location.pathname !== "/") {
+      checkToken();
+    }
+  }, [localStorage]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Routes>
+      <Route path="/" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/Home" element={<Home />} />
+    </Routes>
   );
-}
+};
 
 export default App;

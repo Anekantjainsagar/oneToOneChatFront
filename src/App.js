@@ -27,7 +27,7 @@ const App = () => {
     if (location.pathname !== "/register" && location.pathname !== "/") {
       checkToken();
     }
-  }, [localStorage]);
+  }, [localStorage, history]);
 
   return (
     <Routes>

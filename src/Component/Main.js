@@ -44,8 +44,6 @@ const Main = () => {
     setMessageInput("");
   };
 
-  console.log(messages);
-
   return (
     <div className="w-9/12 bg-black text-white px-2 border border-gray-800">
       <div className="p-1 text-2xl">{context?.clickedUser?.name}</div>

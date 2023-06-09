@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import Context from "../Context/Context";
-import { format } from "timeago.js";
+import TimeAgo from "timeago-react";
 
 const Message = ({ data }) => {
   const context = useContext(Context);
@@ -14,7 +14,7 @@ const Message = ({ data }) => {
     >
       <p>{data?.content}</p>
       <p className="float-right clear-both text-sm">
-        {data?.time ? format(data?.time) : null}
+        {data?.time ? <TimeAgo datetime={data?.time} /> : null}
       </p>
     </div>
   );

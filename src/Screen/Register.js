@@ -47,7 +47,6 @@ const Login = () => {
           axios
             .post(`${LOGIN_URL}/sign-up`, user)
             .then((res) => {
-              console.log(res.data);
               if (res.data.length > 0) {
                 alert(res.data);
               } else {

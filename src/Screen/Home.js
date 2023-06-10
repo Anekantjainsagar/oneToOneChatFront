@@ -9,7 +9,7 @@ const Home = () => {
   const context = useContext(Context);
   useEffect(() => {
     context.getAllUser();
-  }, []);
+  }, [context]);
 
   return (
     <div>

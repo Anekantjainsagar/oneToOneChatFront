@@ -7,7 +7,7 @@ const Message = ({ data }) => {
   return (
     <div
       className={` w-2/5 py-2 px-2.5 rounded-xl m-3 ${
-        data?.sender == context?.user?._id
+        data?.sender === context?.user?._id
           ? "float-right bg-blue-400"
           : "float-left bg-blue-100 text-gray-900"
       } clear-both`}
